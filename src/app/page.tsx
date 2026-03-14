@@ -12,6 +12,7 @@ import TvGrid from '@/components/tv-grid';
 import HeroCarousel from '@/components/hero-carousel';
 import MovieHeroCarousel from '@/components/movie-hero-carousel';
 import TvHeroCarousel from '@/components/tv-hero-carousel';
+import ContinueWatching from '@/components/continue-watching';
 
 
 export const revalidate = 3600; // Revalidate every hour
@@ -120,6 +121,9 @@ export default async function Home({
             {heroMovieItems.length > 0 && tab === 'movies' && <MovieHeroCarousel items={heroMovieItems} />}
             {heroTvItems.length > 0 && tab === 'tv' && <TvHeroCarousel items={heroTvItems} />}
             <div className="container mx-auto space-y-12 px-4 py-8 sm:px-6 lg:px-8">
+              {/* Continue Watching Section */}
+              <ContinueWatching />
+              
               {tab === 'anime' && (
                 <>
                   {trendingAnime.length > 0 && (

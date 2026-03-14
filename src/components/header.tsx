@@ -7,7 +7,7 @@ import { AniMovieLogo } from '@/components/icons';
 import { SearchBar } from '@/components/search-bar';
 import { cn } from '@/lib/utils';
 import { Button } from './ui/button';
-import { Menu } from 'lucide-react';
+import { Menu, Bookmark, Clock } from 'lucide-react';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from './ui/sheet';
 
 const navItems = [
@@ -105,6 +105,20 @@ function MobileNav() {
           <Suspense fallback={<div className="w-full h-10" />}>
             <HeaderNavigation isMobile onLinkClick={() => setOpen(false)} />
           </Suspense>
+          <div className="mt-6 flex flex-col gap-2 border-t border-border pt-4">
+            <Link href="/continue-watching" onClick={() => setOpen(false)}>
+              <Button variant="ghost" className="w-full justify-start">
+                <Clock className="mr-2 h-4 w-4" />
+                Continue Watching
+              </Button>
+            </Link>
+            <Link href="/watchlist" onClick={() => setOpen(false)}>
+              <Button variant="ghost" className="w-full justify-start">
+                <Bookmark className="mr-2 h-4 w-4" />
+                Watchlist
+              </Button>
+            </Link>
+          </div>
         </SheetContent>
       </Sheet>
     </div>
@@ -127,6 +141,19 @@ export default function Header() {
         <div className="flex flex-1 items-center justify-end space-x-2">
           <div className="w-full flex-1 md:w-auto md:flex-none">
             <SearchBar />
+          </div>
+          {/* Desktop action buttons */}
+          <div className="hidden md:flex items-center gap-1">
+            <Link href="/continue-watching">
+              <Button variant="ghost" size="icon" title="Continue Watching">
+                <Clock className="h-4 w-4" />
+              </Button>
+            </Link>
+            <Link href="/watchlist">
+              <Button variant="ghost" size="icon" title="Watchlist">
+                <Bookmark className="h-4 w-4" />
+              </Button>
+            </Link>
           </div>
           <MobileNav />
         </div>
